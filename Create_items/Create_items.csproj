@@ -116,6 +116,7 @@
     <Content Include="assets\js\main.js" />
     <Content Include="CreateItems.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="itemDetails.aspx" />
     <Content Include="packages.config" />
     <Content Include="RDLC-Report.aspx" />
     <Content Include="ViewSwitcher.ascx" />
@@ -168,6 +169,13 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>itemDataset.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="itemDetails.aspx.cs">
+      <DependentUpon>itemDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="itemDetails.aspx.designer.cs">
+      <DependentUpon>itemDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RDLC-Report.aspx.cs">
