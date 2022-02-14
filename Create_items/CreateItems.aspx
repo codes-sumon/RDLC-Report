@@ -10,6 +10,24 @@
     <link href="assets/css/font-awesome.min.css" rel="stylesheet"/>
     <link href="assets/css/style.css" rel="stylesheet"/>
     <link href="assets/css/responsive.css" rel="stylesheet"/>
+
+    <script language="javascript" type="text/javascript" >
+        function setDecimal(abc) {
+            var dt = document.getElementById(abc).value;
+            if (dt.length > 0) {
+                document.getElementById(abc).value = parseFloat(dt).toFixed(2);
+            }
+        }
+        function isNumber(evt) {
+            evt = (evt) ? evt : window.event;
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if (charCode != 46 && charCode > 31
+          && (charCode < 48 || charCode > 57)) {
+                return false;
+            }
+            return true;
+        }
+    </script>
 </head>
 
 <body>
@@ -63,65 +81,74 @@
                         <div class="white-box">
                             <h3>Create A New Item</h3>
                             <div class="contact-form">
-
                                 <form id="contactForm" runat="server">
                                     <div class="row">
-                                        <div class="col-md-8">
-                                            <asp:TextBox ID="txtItemCode" runat="server" placeholder="Item Code Will Auto Genarate" Enabled="true"></asp:TextBox>
+                                        <div class="col-md-6">
+                                            <asp:TextBox ID="txtItemCode" onkeypress="return isNumber(event)" runat="server" placeholder="Item Code Will Auto Genarate" Enabled="true"></asp:TextBox>
                                         </div>
-
-                                        <div class="col-md-12">
-                                            <div class="row">
-                                                <div class="col-md-8">
-                                                    <asp:TextBox ID="txtItemFullName" runat="server" placeholder="Item Full Name"></asp:TextBox>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <asp:Label ID="txtID" runat="server" Text="" Visible="False"></asp:Label>
-                                                    <asp:Label ID="Label1" runat="server" Text="" Visible="False"></asp:Label>
-                                                    <asp:RequiredFieldValidator ID="itemName" runat="server" ControlToValidate="txtItemFullName" ErrorMessage="Please Enter The Item Full Name" ForeColor="Red" SetFocusOnError="True"></asp:RequiredFieldValidator>
-                                                </div>
-                                            </div>
+                                        <div class="col-md-6">
+                                            <asp:TextBox ID="txtItemFullName" runat="server" placeholder="Item Full Name"></asp:TextBox>
                                         </div>
-
-                                        <div class="col-md-8">
+                                        <div class="col-md-6">
                                             <asp:TextBox ID="txtItemShortName" runat="server" placeholder="Item Short Name"></asp:TextBox>
                                         </div>
+                                        <div class="col-md-6">
+                                            <asp:DropDownList ID="ddlSize" runat="server" AutoPostBack="true" placeholder="Select Size"></asp:DropDownList>
+                                        </div>
                                     </div>
-                                    <asp:Button ID="btnSubmit" runat="server" Text="Save Item" type="submit" value="Send Message" OnClick="btnSubmit_Click"/>
-                                    <asp:Button ID="btnDelete" runat="server" Text="Delete Item" type="submit" value="Delete Item" OnClick="btnDelete_Click"/>    
                                     
                                     <div class="row">
-                                    <div class="col-md-8">
-                                        <asp:GridView ID="itemGridView" runat="server" class="table table-textcenter" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" OnSelectedIndexChanged="itemGridView_SelectedIndexChanged">
-                                             <AlternatingRowStyle BackColor="White" />
+                                        <div class="col-md-6">
+                                            <asp:DropDownList ID="ddlCatagory" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCatagory_SelectedIndexChanged"></asp:DropDownList>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <asp:DropDownList ID="ddlSubCatagory" runat="server" Enabled="false"></asp:DropDownList>
+                                        </div>
+                                    </div>
 
-                                             <Columns>
-                                                 <asp:CommandField ShowSelectButton="True" ItemStyle-Width="40px" ItemStyle-HorizontalAlign="Center" ItemStyle-ForeColor="Blue" ItemStyle-Height="25px" HeaderText="Edit">
-                                                     <ItemStyle HorizontalAlign="Center" ForeColor="Blue" Height="25px" Width="40px"></ItemStyle>
-                                                 </asp:CommandField>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <asp:Label ID="txtID" runat="server" Text="" Visible="False"></asp:Label>
+                                            <asp:RequiredFieldValidator ID="itemName" runat="server" ControlToValidate="txtItemFullName" ErrorMessage="Please Enter The Item Full Name" ForeColor="Red" SetFocusOnError="True"></asp:RequiredFieldValidator>
+                                        </div>
+                                    </div>
 
-                                                 <asp:BoundField DataField="id" HeaderText="ID" />
-                                                 <asp:BoundField DataField="itemCode" HeaderText="Item Code">
-                                                     <ItemStyle HorizontalAlign="Center" />
-                                                     <HeaderStyle HorizontalAlign="Center" />
-                                                 </asp:BoundField>
-                                                 <asp:BoundField DataField="itemName" HeaderText="Item Full Name" />
-                                                 <asp:BoundField DataField="itemShortName" HeaderText="Item Short Name" />
-                                             </Columns>
+                                    <asp:Button ID="btnSubmit" runat="server" Text="Save Item" type="submit" value="Send Message" OnClick="btnSubmit_Click"/>
+                                    <asp:Button ID="btnDelete" runat="server" Text="Delete Item" type="submit" value="Delete Item" OnClick="btnDelete_Click"/>  
+                                    <asp:Button ID="btnClear" runat="server" Text="Clear Fild" type="submit" value="Clear Fild" OnClick="btnClear_Click" /> 
 
-                                             <EditRowStyle BackColor="#2461BF" />
-                                             <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                                             <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                                             <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-                                             <RowStyle BackColor="#EFF3FB" />
-                                             <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                                             <SortedAscendingCellStyle BackColor="#F5F7FB" />
-                                             <SortedAscendingHeaderStyle BackColor="#6D95E1" />
-                                             <SortedDescendingCellStyle BackColor="#E9EBEF" />
-                                             <SortedDescendingHeaderStyle BackColor="#4870BE" />
-                                         </asp:GridView> 
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <asp:GridView ID="itemGridView" runat="server" class="table table-textcenter" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" OnSelectedIndexChanged="itemGridView_SelectedIndexChanged">
+                                                 <AlternatingRowStyle BackColor="White" />
+
+                                                 <Columns>
+                                                     <asp:CommandField ShowSelectButton="True" ItemStyle-Width="40px" ItemStyle-HorizontalAlign="Center" ItemStyle-ForeColor="Blue" ItemStyle-Height="25px" HeaderText="Edit">
+                                                         <ItemStyle HorizontalAlign="Center" ForeColor="Blue" Height="25px" Width="40px"></ItemStyle>
+                                                     </asp:CommandField>
+
+                                                     <asp:BoundField DataField="id" HeaderText="ID" />
+                                                     <asp:BoundField DataField="itemCode" HeaderText="Item Code">
+                                                         <ItemStyle HorizontalAlign="Center" />
+                                                         <HeaderStyle HorizontalAlign="Center" />
+                                                     </asp:BoundField>
+                                                     <asp:BoundField DataField="itemName" HeaderText="Item Full Name" />
+                                                     <asp:BoundField DataField="itemShortName" HeaderText="Item Short Name" />
+                                                 </Columns>
+
+                                                 <EditRowStyle BackColor="#2461BF" />
+                                                 <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                                 <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                                 <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                                                 <RowStyle BackColor="#EFF3FB" />
+                                                 <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                                 <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                                                 <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                                                 <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                                                 <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                                             </asp:GridView> 
                                         </div> 
-                                        </div>                              
+                                    </div>                              
                                 </form>
                             </div>
                         </div>

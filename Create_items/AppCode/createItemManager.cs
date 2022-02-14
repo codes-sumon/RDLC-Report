@@ -24,11 +24,11 @@ namespace Create_items
                 command.Transaction = transaction;
 
                 command.CommandText = @"
-                INSERT INTO [dbo].[createItems]  ([itemCode],[itemName],[itemShortName])
-                     VALUES('" + acreateItemInfo.itemCode + "','" + acreateItemInfo.itemFulName + "','" + acreateItemInfo.itemShortName + "')";
+                INSERT INTO [dbo].[createItems]  ([itemCode],[itemName],[itemShortName],[SizeID],[CategoryID],[subCategoryID])
+                     VALUES('" + acreateItemInfo.itemCode + "','" + acreateItemInfo.itemFulName + "','" + acreateItemInfo.itemShortName + "','" + acreateItemInfo.sizeID + "','" + acreateItemInfo.CatagryID + "','" + acreateItemInfo.subCatagoryID + "')";
                                 command.ExecuteNonQuery();
 
-
+               
 
                 transaction.Commit();
                 //return MstId;
@@ -172,7 +172,7 @@ namespace Create_items
                 command.Transaction = transaction;
 
                 command.CommandText = @"
-                Update [dbo].[createItems] set itemCode='" + acreateItemInfo.itemCode + "' , itemName='" + acreateItemInfo.itemFulName + "',itemShortName='" + acreateItemInfo.itemShortName+ "' where id='" + acreateItemInfo.ID + "'";
+                Update [dbo].[createItems] set itemCode='" + acreateItemInfo.itemCode + "' , itemName='" + acreateItemInfo.itemFulName + "',itemShortName='" + acreateItemInfo.itemShortName + "',SizeID='" + acreateItemInfo.sizeID + "',CategoryID='" + acreateItemInfo.CatagryID + "',subCategoryID='" + acreateItemInfo.subCatagoryID + "' where id='" + acreateItemInfo.ID + "'";
                 command.ExecuteNonQuery();
 
 
@@ -191,6 +191,31 @@ namespace Create_items
 
             }
             throw new NotImplementedException();
+        }
+
+
+        internal static object GetCatagory(string p)
+        {
+            string ConnectinString = DBManager.OraConnString();
+            string query = "SELECT * from Category";
+            var data = DBManager.ExecuteQuery(ConnectinString, query, "Category");
+            return data;
+        }
+
+        internal static object GetSubCatagory(string catagoryID)
+        {
+            string ConnectinString = DBManager.OraConnString();
+            string query = "SELECT * FROM [firstTestProject].[dbo].[SubCategory] where CategoryID='" + catagoryID + "'";
+            var data = DBManager.ExecuteQuery(ConnectinString, query, "SubCategory");
+            return data;
+        }
+
+        internal static object GetSize(string p)
+        {
+            string ConnectinString = DBManager.OraConnString();
+            string query = "SELECT * from Size";
+            var data = DBManager.ExecuteQuery(ConnectinString, query, "Size");
+            return data;
         }
     }
 }

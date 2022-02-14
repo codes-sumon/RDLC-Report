@@ -40,6 +40,42 @@ namespace Create_items {
         protected global::System.Web.UI.WebControls.TextBox txtItemFullName;
         
         /// <summary>
+        /// txtItemShortName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtItemShortName;
+        
+        /// <summary>
+        /// ddlSize control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlSize;
+        
+        /// <summary>
+        /// ddlCatagory control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlCatagory;
+        
+        /// <summary>
+        /// ddlSubCatagory control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlSubCatagory;
+        
+        /// <summary>
         /// txtID control.
         /// </summary>
         /// <remarks>
@@ -49,15 +85,6 @@ namespace Create_items {
         protected global::System.Web.UI.WebControls.Label txtID;
         
         /// <summary>
-        /// Label1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
-        
-        /// <summary>
         /// itemName control.
         /// </summary>
         /// <remarks>
@@ -65,15 +92,6 @@ namespace Create_items {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator itemName;
-        
-        /// <summary>
-        /// txtItemShortName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtItemShortName;
         
         /// <summary>
         /// btnSubmit control.
@@ -92,6 +110,15 @@ namespace Create_items {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnDelete;
+        
+        /// <summary>
+        /// btnClear control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnClear;
         
         /// <summary>
         /// itemGridView control.

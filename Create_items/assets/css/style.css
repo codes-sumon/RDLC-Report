@@ -40,12 +40,12 @@ a:hover { text-decoration: none }
     box-shadow: 0 0 10px #ccffff;
     padding: 30px;
 }
-input[type="text"], input[type="email"], input[type="tel"], input[type="password"], input[type="url"], textarea {
+input[type="text"], input[type="email"], input[type="tel"], input[type="password"], input[type="url"], textarea, select {
     background: #CCFFFF none repeat scroll 0 0;
     border: medium none;
     padding: 15px;
 }
-.contact-form input, .contact-form textarea {
+.contact-form input, .contact-form textarea, .contact-form select {
     margin-bottom: 15px;
     width: 100%;
 }
